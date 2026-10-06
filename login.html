@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MediAssistAI — Sign in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230F7A6E' stroke-width='2.5'%3E%3Cpath d='M12 2v6M12 16v6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M16 12h6M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2'/%3E%3C/svg%3E" />
+</head>
+<body class="auth-body">
+
+<div class="auth-shell">
+
+  <!-- ===================================================== hero / visual -->
+  <div class="auth-hero">
+    <div class="auth-hero-bg" aria-hidden="true">
+      <svg class="hero-blob" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path fill="currentColor" d="M471,318Q459,386,402,423Q345,460,283,470Q221,480,169,443Q117,406,90,347Q63,288,89,228Q115,168,166,127Q217,86,278,84Q339,82,391,116Q443,150,461,207Q479,264,471,318Z"/>
+      </svg>
+      <svg class="hero-grid" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+            <circle cx="1" cy="1" r="1" fill="currentColor" opacity="0.35"/>
+          </pattern>
+        </defs>
+        <rect width="400" height="400" fill="url(#grid)"/>
+      </svg>
+    </div>
+
+    <div class="auth-hero-content">
+      <div class="auth-hero-badge">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2v6M12 16v6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M16 12h6M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2"/>
+        </svg>
+        AI-assisted triage
+      </div>
+      <h1 class="auth-hero-title">Know what your<br/>symptoms might mean.</h1>
+      <p class="auth-hero-sub">
+        Describe how you're feeling in plain language — English, Tanglish, or
+        Hindi — and get a ranked, confidence-scored assessment across 50
+        conditions, plus precautions and first-aid guidance.
+      </p>
+
+      <!-- illustrative "vitals card" -->
+      <div class="hero-vitals-card">
+        <svg class="hero-pulse" viewBox="0 0 260 60" preserveAspectRatio="none" aria-hidden="true">
+          <polyline fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+            points="0,30 40,30 52,30 62,6 74,54 86,30 98,30 120,30 132,14 144,44 156,30 178,30 260,30" />
+        </svg>
+        <div class="hero-vitals-row">
+          <div class="hero-vitals-stat">
+            <span class="hero-vitals-num">50</span>
+            <span class="hero-vitals-label">conditions modeled</span>
+          </div>
+          <div class="hero-vitals-stat">
+            <span class="hero-vitals-num">94.7%</span>
+            <span class="hero-vitals-label">test accuracy</span>
+          </div>
+          <div class="hero-vitals-stat">
+            <span class="hero-vitals-num">3</span>
+            <span class="hero-vitals-label">languages understood</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="auth-hero-illustration" aria-hidden="true">
+        <svg viewBox="0 0 200 200" width="150" height="150">
+          <circle cx="100" cy="100" r="98" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.25"/>
+          <g transform="translate(48,42)">
+            <rect x="0" y="0" width="104" height="116" rx="14" fill="currentColor" opacity="0.12"/>
+            <path d="M52 22 L52 60 M33 41 L71 41" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+            <path d="M18 84 Q 30 84 34 70 Q 40 92 46 70 Q 50 84 62 84 L 86 84"
+                  fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================================================== auth form panel -->
+  <div class="auth-panel">
+    <div class="auth-panel-inner">
+      <div class="auth-brand">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2v6M12 16v6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M16 12h6M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2"/>
+        </svg>
+        <span>MediAssist<span class="accent-dot">AI</span></span>
+      </div>
+
+      <div class="auth-tabs" role="tablist">
+        <button type="button" class="auth-tab active" data-tab="login" role="tab">Sign in</button>
+        <button type="button" class="auth-tab" data-tab="register" role="tab">Create account</button>
+      </div>
+
+      <!-- --------------------------------------------------------- login -->
+      <form id="loginForm" class="auth-form" autocomplete="on">
+        <label class="auth-field">
+          <span>Username</span>
+          <input type="text" id="loginUsername" name="username" autocomplete="username" required
+                 placeholder="e.g. ananth28" />
+        </label>
+        <label class="auth-field">
+          <span>Password</span>
+          <input type="password" id="loginPassword" name="password" autocomplete="current-password" required
+                 placeholder="••••••••" />
+        </label>
+        <div id="loginError" class="auth-error hidden"></div>
+        <button type="submit" class="btn btn-primary auth-submit">Sign in</button>
+      </form>
+
+      <!-- ------------------------------------------------------ register -->
+      <form id="registerForm" class="auth-form hidden" autocomplete="on">
+        <label class="auth-field">
+          <span>Display name <span class="auth-optional">(optional)</span></span>
+          <input type="text" id="regDisplayName" name="display_name" autocomplete="name"
+                 placeholder="e.g. Ananth" />
+        </label>
+        <label class="auth-field">
+          <span>Username</span>
+          <input type="text" id="regUsername" name="username" autocomplete="username" required
+                 placeholder="3-32 chars: letters, numbers, _ or ." />
+        </label>
+        <label class="auth-field">
+          <span>Password</span>
+          <input type="password" id="regPassword" name="password" autocomplete="new-password" required
+                 placeholder="At least 6 characters" />
+        </label>
+        <div id="registerError" class="auth-error hidden"></div>
+        <button type="submit" class="btn btn-primary auth-submit">Create account</button>
+      </form>
+
+      <p class="auth-disclaimer">
+        Educational demo only — not a real medical diagnosis. Your account is
+        stored locally on this server for demo purposes.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<script src="/static/login.js"></script>
+</body>
+</html>

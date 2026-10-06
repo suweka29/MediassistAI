@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MediAssistAI — Symptom Triage Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230F7A6E' stroke-width='2.5'%3E%3Cpath d='M12 2v6M12 16v6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M16 12h6M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2'/%3E%3C/svg%3E" />
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============================================================ header -->
+  <header class="topbar">
+    <div class="brand">
+      <svg class="pulse" viewBox="0 0 220 40" preserveAspectRatio="none" aria-hidden="true">
+        <polyline class="pulse-line" fill="none" stroke-width="2"
+          points="0,20 30,20 40,20 48,4 56,36 64,20 74,20 90,20 98,10 106,30 114,20 130,20 220,20" />
+      </svg>
+      <div class="brand-text">
+        <span class="brand-name">MediAssist<span class="accent-dot">AI</span></span>
+        <span class="brand-sub">symptom triage assistant · educational demo</span>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <span id="modelBadge" class="badge badge-muted">loading model…</span>
+      <span id="userBadge" class="badge badge-user hidden"></span>
+      <button id="detailsBtn" class="btn btn-ghost" type="button">Patient details</button>
+      <button id="resetBtn" class="btn btn-ghost" type="button">New session</button>
+      <button id="logoutBtn" class="btn btn-ghost" type="button">Logout</button>
+    </div>
+  </header>
+
+  <!-- ===================================================== details drawer -->
+  <div id="detailsDrawer" class="drawer hidden">
+    <div class="drawer-row">
+      <label>Age
+        <input type="number" id="ageInput" min="0" max="120" value="35" />
+      </label>
+      <label>Gender
+        <select id="genderInput">
+          <option value="male">male</option>
+          <option value="female">female</option>
+        </select>
+      </label>
+      <label>Duration (days)
+        <input type="number" id="durationInput" min="0" max="60" value="3" />
+      </label>
+      <label>Severity (1–10)
+        <input type="range" id="severityInput" min="1" max="10" value="5" />
+        <span id="severityVal">5</span>
+      </label>
+      <button id="applyDetailsBtn" class="btn btn-primary" type="button">Apply</button>
+    </div>
+    <p class="drawer-hint">These are defaults used until you mention them in the chat
+      (e.g. "I'm 28, male, fever for 3 days").</p>
+  </div>
+
+  <!-- ============================================================== main -->
+  <main class="chat-shell">
+    <div id="messages" class="messages" role="log" aria-live="polite"></div>
+
+    <div id="typing" class="typing hidden">
+      <span></span><span></span><span></span>
+    </div>
+
+    <form id="chatForm" class="composer" autocomplete="off">
+      <input id="chatInput" type="text" placeholder="Describe your symptoms… e.g. fever, cough, headache for 3 days"
+             maxlength="2000" />
+      <button type="submit" class="btn btn-primary send-btn">Send</button>
+    </form>
+    <p class="disclaimer-strip">
+      Not a medical diagnosis. Trained on synthetic data for demonstration only.
+      If this is an emergency, contact local emergency services immediately.
+    </p>
+  </main>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
